@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-def prefilter_items(data, item_features=None, take_n_popular=None):
+def prefilter_items(data, take_n_popular=None):
     # Уберем самые популярные товары (их и так купят)
     popularity = (data.groupby('item_id')['user_id'].nunique() / data['user_id'].nunique()).reset_index()
     popularity.rename(columns={'user_id': 'share_unique_users'}, inplace=True)    
